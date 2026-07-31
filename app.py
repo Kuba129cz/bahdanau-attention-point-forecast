@@ -107,24 +107,27 @@ def main():
                     
                     fig.add_trace(go.Scatter(
                         x=df_chart.index, y=df_chart["Max Power"], 
-                        mode="lines", name="Predicted Max Power", 
+                        mode="lines", name="Max Predicted Power", 
                         line=dict(width=0), 
-                        showlegend=False
+                        showlegend=False,
+                        hovertemplate="Max Power: %{y:.2f} kWh<extra></extra>"
                     ))
                     
                     fig.add_trace(go.Scatter(
                         x=df_chart.index, y=df_chart["Min Power"], 
-                        mode="lines", name="Predicted Min Power", 
+                        mode="lines", name="Min Predicted Power", 
                         line=dict(width=0),
                         fill="tonexty", 
                         fillcolor="rgba(255, 127, 14, 0.2)",
-                        showlegend=False
+                        showlegend=False,
+                        hovertemplate="Min Power: %{y:.2f} kWh<extra></extra>"
                     ))
                     
                     fig.add_trace(go.Scatter(
                         x=df_chart.index, y=df_chart["Average Power"], 
                         mode="lines+markers", name="Predicted Power", 
-                        line=dict(color="rgba(255, 127, 14, 1)", width=3)
+                        line=dict(color="rgba(255, 127, 14, 1)", width=3),
+                        hovertemplate="Predicted Power: %{y:.2f} kWh<extra></extra>"
                     ))
                     
                     if df_today_energy is not None and not df_today_energy.empty:
