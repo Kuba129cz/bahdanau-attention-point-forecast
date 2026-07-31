@@ -1,0 +1,9 @@
+streamlit
+plotly
+pandas
+numpy
+scikit-learn
+joblib
+pvlib
+requests
+torch --index-url https://download.pytorch.org/whl/cpu
