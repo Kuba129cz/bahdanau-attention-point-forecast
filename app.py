@@ -107,14 +107,14 @@ def main():
                     
                     fig.add_trace(go.Scatter(
                         x=df_chart.index, y=df_chart["Max Power"], 
-                        mode="lines", name="Max Power", 
+                        mode="lines", name="Predicted Max Power", 
                         line=dict(width=0), 
                         showlegend=False
                     ))
                     
                     fig.add_trace(go.Scatter(
                         x=df_chart.index, y=df_chart["Min Power"], 
-                        mode="lines", name="Min Power", 
+                        mode="lines", name="Predicted Min Power", 
                         line=dict(width=0),
                         fill="tonexty", 
                         fillcolor="rgba(255, 127, 14, 0.2)",
@@ -123,7 +123,7 @@ def main():
                     
                     fig.add_trace(go.Scatter(
                         x=df_chart.index, y=df_chart["Average Power"], 
-                        mode="lines+markers", name="Average Power", 
+                        mode="lines+markers", name="Predicted Power", 
                         line=dict(color="rgba(255, 127, 14, 1)", width=3)
                     ))
                     
