@@ -110,7 +110,7 @@ def main():
                         mode="lines", name="Max Predicted Power", 
                         line=dict(width=0), 
                         showlegend=False,
-                        hovertemplate="Max Power: %{y:.2f} kWh<extra></extra>"
+                        hovertemplate="Max Predicted Power: %{y:.2f} kWh<extra></extra>"
                     ))
                     
                     fig.add_trace(go.Scatter(
@@ -120,7 +120,7 @@ def main():
                         fill="tonexty", 
                         fillcolor="rgba(255, 127, 14, 0.2)",
                         showlegend=False,
-                        hovertemplate="Min Power: %{y:.2f} kWh<extra></extra>"
+                        hovertemplate="Min Predicted Power: %{y:.2f} kWh<extra></extra>"
                     ))
                     
                     fig.add_trace(go.Scatter(
