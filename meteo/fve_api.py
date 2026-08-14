@@ -12,8 +12,8 @@ from meteo.constants import FVE_SCHEMA
 _CZ_TZ = ZoneInfo("Europe/Prague")
 _UTC_TZ = ZoneInfo("UTC")
 
-USERNAME = st.secrets["USERNAME"]
-PASSWORD = st.secrets["PASSWORD"]
+key = st.secrets["KEY"]
+token = st.secrets["TOKEN"]
 
 @handle_api_errors("FVE RAW FETCH")
 def _fetch_raw_day(day: date) -> dict[str, list[Any]]:
@@ -31,19 +31,19 @@ def _fetch_raw_day(day: date) -> dict[str, list[Any]]:
         ValueError: If the FVE station credentials cannot be found or are missing.
         requests.exceptions.HTTPError: Via the @handle_api_errors decorator.
     """    
-    base_url = "https://aba.solarmon.eu/rest-server/"
+    base_url = "https://rest.solarmon.app/aba/"
 
     query_params = {
         "q": "getDataPredModHourRange",
         "dateFrom": day.strftime("%Y-%m-%d"),
         "dateTo": day.strftime("%Y-%m-%d")
     }
-    payload = {
-        'username': USERNAME,
-        'password': PASSWORD
+    header = {
+        'X-Rest-Client-Key': key,
+        'X-Rest-Token': token
     }
         
-    response = requests.post(base_url, params=query_params, data=payload, timeout=10)
+    response = requests.post(base_url, params=query_params, headers=header, timeout=10)
     response.raise_for_status()
 
     raw_data = response.json()

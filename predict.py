@@ -99,7 +99,7 @@ class EnsemblePredictor:
         x_future = torch.from_numpy(x_future_df.to_numpy()).float().unsqueeze(0).to(self.device)
 
         predictions = []
-        night_mask = df_future['irradiance_0'].values <= 2.0
+        night_mask = df_future['irradiance_0'].values <= 0.0
         
         with torch.no_grad():
             for model in self.models:
